@@ -3,51 +3,38 @@
  * @param {string} p
  * @return {boolean}
  */
-s = "aaaaaaaaaa"
-p = "a*b"
+s = "aaaaaaaaaabbbbb"
+p = ".*"
 var isMatch = function (s, p) {
-  if (p === '.*') return true
-  let wildcard = ''
-  let symbolNum = ''
-  let lenS = s.length
-  let lenP = p.length
-  let params_strP
-  if (p === '') {
-    if (s === '') {
-      return true
-    }
-    return false
+
+  let index = 0
+
+  const reg = /(\w|.)(\*)*/g
+
+  // let ident, flag = false
+
+  let reg_info = reg.exec(p)
+
+  function info_format() {
+    
+    if (!reg_info) return true
+    
+    
+    ident = reg_info[0]
+    flag = reg_info.length > 2
+    
+    if (flag){}
   }
-  if (lenP > lenS) return false
-  for (let i = 0; i < lenS; i++) {
-    if (symbolNum === '*' && s[i] === wildcard) {
-      params_strP = s[i]
-    } else {
-      params_strP = p[i]
+
+  while (index === s.length - 1) {
+    if (!info_format(s[index])) {
+      return false
     }
-    if (test_p({strP: params_strP, strS: s[i]})) continue
-    return false
   }
   return true
-
-  function test_p({strP, strS}) {
-    switch (strP) {
-      case '.':
-        wildcard = '.'
-        return true
-      case '*':
-        symbolNum = '*'
-        if (wildcard === '.') {
-          return true
-        } else {
-          return wildcard === strS
-        }
-      default:
-        wildcard = strP
-        return strP === strS
-
-    }
-
-  }
 }
-console.log(isMatch(s, p))
+// console.log(isMatch(s, p))
+
+a = "aab"
+b = "c*a*b"
+console.log(isMatch(a, b))
