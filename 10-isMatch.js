@@ -18,8 +18,5 @@ var isMatch = function (s, p) {
   }
 
   return match(s.length - 1, p.length - 1)
-
+// return new RegExp(`^${p}$`).test(s)
 }
-s = "mississippi"
-p = "mis*is*p*."
-console.log(isMatch(s, p))
