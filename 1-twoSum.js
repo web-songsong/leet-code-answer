@@ -1,5 +1,10 @@
-let nums = [2, 7, 11, 15], target = 9
-const twoSum = function (nums, target) {
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+
+ const twoSum = function (nums, target) {
   let is_exists = {}
   for (let i = 0; i < nums.length; i++) {
     if (is_exists[nums[i]] > -1) {
@@ -10,4 +15,3 @@ const twoSum = function (nums, target) {
   }
 
 }
-console.log(twoSum(nums, target))
